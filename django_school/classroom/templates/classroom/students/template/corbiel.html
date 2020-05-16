@@ -1,0 +1,223 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE HTML>
+<!--
+	Transitive by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>CapMat</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="{% static 'template/assets/css/main.css' %}" />
+	</head>
+	<body class="subpage">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="logo"><a href="index.html">CapMat <span>Application</span></a></div>
+				<a href="#menu" class="toggle"><span>Menu</span></a>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="generic.html">Generic</a></li>
+					<li><a href="elements.html">Elements</a></li>
+				</ul>
+			</nav>
+
+		<!-- One -->
+
+
+		<!-- Four -->
+			<section id="four" class="wrapper style2">
+				<div class="inner">
+
+					<header class="align-center">
+						<h2>Formulaire de création de projet</h2>
+						<p>Veuillez préciser les caractéristiques de votre projet en complétant le formulaire ci-dessous.</p>
+					</header>
+	 
+              <form method="POST" class="post-form" enctype="multipart/form-data">
+              
+						  {% csrf_token %}
+						   
+							
+							
+                            
+						
+						
+							<ul>				
+								<h1>{{ form.titre_projet|as_crispy_field }}</h1>
+								<h1>{{ form.description_projet|as_crispy_field }}</h1>
+								  
+									<h1>{{ form.type_evt|as_crispy_field }}</h1>
+							   
+										<h1>	{{ form.domaine|as_crispy_field }}</h1>
+								
+											<h1>	{{ form.subject|as_crispy_field }}</h1> 
+								
+										
+								</ul>
+
+            <a href="#deux" class="nav-link">Suivant >>></a>
+      
+				
+
+				</div>
+			</section>
+
+
+
+
+
+
+
+	<section id="trois" class="wrapper style1">
+				<div class="inner">
+
+					<header class="align-center">
+						<h2>Précisions techniques sur le projet (facultatif)</h2>
+					</header>
+					
+			<ul>				
+            <h1>{{ form.sensibilite|as_crispy_field }}</h1>
+			<h1>{{ form.stabilite|as_crispy_field }}</h1>
+              
+				<h1>{{ form.selectivite|as_crispy_field }}</h1>
+           
+					<h1>{{ form.precision|as_crispy_field }}</h1>
+            
+						<h1>{{ form.gamme|as_crispy_field }}</h1> 
+            
+							<h1>{{ form.format_sortie|as_crispy_field }}</h1>
+								<h1>{{ form.condition_ambiante|as_crispy_field }}</h1>
+									<h1>{{ form.temps_reponse|as_crispy_field }}</h1>
+										<h1>{{ form.cout|as_crispy_field }}</h1>
+											<h1>{{ form.poids|as_crispy_field }}</h1>
+			</ul>
+
+				</div>
+	</section>
+
+
+
+
+
+
+
+
+
+	<section id="trois" class="wrapper style3">
+		<div class="inner">
+
+			<header class="align-center">
+				<h2>Ajouter une Equipe</h2>
+			</header>
+			
+	<ul>				
+	<h1>{{ form.nom_1|as_crispy_field }}</h1>
+	<h1>{{ form.adresse_email_1|as_crispy_field }}</h1>
+	<h1>{{ form.nom_2|as_crispy_field }}</h1>
+	<h1>{{ form.adresse_email_2|as_crispy_field }}</h1>
+	<h1>{{ form.nom_3|as_crispy_field }}</h1>
+	<h1>{{ form.adresse_email_3|as_crispy_field }}</h1>
+
+	</ul>
+
+		</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+	<section id="deux" class="wrapper style2">
+				<div class="inner">
+
+					<header class="align-center">
+						<h2>Validation de votre formulaire</h2>
+					</header>
+					
+					
+		
+			
+      			
+                 <p>Vous pouvez ajouter des fichiers associés à votre projet. (Photos, vidéos, documents...)</p>
+                       
+     <div>
+				 <ul>				
+					<h1>{{ form.file_1|as_crispy_field }}</h1>
+					<h1> {{ form.file_2|as_crispy_field }}</h1>
+					  
+						<h1> {{ form.confidentalite|as_crispy_field }}</h1>
+				   
+						
+					</ul>
+       
+            
+           
+           
+						  
+				
+
+              <button type="submit" class="btn btn-success">Sauvegarder</button>
+          
+			</div>	
+
+				</div>
+	</section>
+
+
+
+
+
+
+
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper">
+				<div class="inner">
+					<section>
+			
+					</section>
+					<div class="copyright">
+						&copy; copyright: 2020 <a href="https://templated.co/">ERPI (Research team on innovation process)</a>
+					</div>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="{% static 'template/assets/js/jquery.min.js'%}"></script>
+			<script src="{% static 'template/assets/js/jquery.scrolly.min.js'%}"></script>
+			<script src="{% static 'template/assets/js/jquery.scrollex.min.js'%}"></script>
+			<script src="{% static 'template/assets/js/skel.min.js'%}"></script>
+			<script src="{% static 'template/assets/js/util.js'%}"></script>
+			<script src="{% static 'template/assets/js/main.js'%}"></script>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+Les experts correspondant à votre projetLes experts correspondant à votre projetLes experts correspondant à votre projet

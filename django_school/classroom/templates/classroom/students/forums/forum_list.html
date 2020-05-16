@@ -1,0 +1,353 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+   <head>
+
+     <!-- Metas -->
+       <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+   <meta name="keywords" content="HTML5 Template Arco onepage themeforest" />
+   <meta name="description" content="Arco - Onepage Multi-Purpose HTML5 Template" />
+   <meta name="author" content="" />
+
+   <!-- Title  -->
+   <title>CAP-MAT</title>
+
+   <!-- Favicon -->
+   <link rel="shortcut icon" href="img/favicon.ico" />
+
+   <!-- Google Fonts -->
+   <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800" rel="stylesheet">
+       <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900" rel="stylesheet">
+
+   <!-- Plugins -->
+   <link rel="stylesheet" href="{% static 'acro/css/plugins.css' %}" />
+
+       <!-- Core Style Css -->
+       <link rel="stylesheet" href="{% static 'acro/css/style.css' %}" />
+
+   </head>
+
+   <body>
+
+     <!-- =====================================
+     ==== Start Loading -->
+
+     <div class="loading">
+       <div class="text-center middle">
+         <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+       </div>
+     </div>
+       
+     <!-- End Loading ====
+     ======================================= -->
+
+      
+     <!-- =====================================
+     ==== Start Navbar -->
+
+   <nav class="navbar navbar-expand-lg">
+     <div class="container">
+
+          
+      <h5 style="color: #FFFFFF;">
+        <a  href="{% url 'home' %}">Cap-Mat  </a>     
+      </h5>
+
+       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="icon-bar"><i class="fas fa-bars"></i></span>
+       </button>
+
+       <!-- navbar links -->
+       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'home' %}" style="color: #FFFFFF;">Home</a>
+          </li>
+          <li class="nav-item">
+                  <a class="nav-link" href="{% url 'question_an' %}" >Espace d'Échanges et de Réflexion</a>
+                </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'students:MesTechnologies_list' %}" >La Banque de technologies</a>
+      
+      </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'students:forum_list' %}" data-scroll-nav="0" >Projets & Idées</a>
+                </li>
+         </ul>
+       </div>
+     </div>
+   </nav>
+
+     <!-- End Navbar ====
+     ======================================= -->
+
+
+     <!-- =====================================
+     ==== Start Header -->
+
+     <header class="header wave valign bg-img" data-scroll-index="0" data-overlay-dark="5" data-background="{% static 'acro/img/29021.jpg' %}" data-stellar-background-ratio="0.5">
+
+           <!-- particles -->
+           <div id="particles-js"></div>
+
+       <div class="container">
+         <div class="row">
+           <div class="full-width text-center caption mt-30">
+        
+                     
+                       <h1>CAP-MAT PlateForme</h1>
+                
+                       <p>Vous trouverez ici toutes les demandes / idées de capteurs innovants proposés par des passionnés ou des professionnels !</p>
+                     
+                       {% load widget_tweaks %}
+                       <br>
+                       <div>
+                        <form method="get">
+                                    
+                          <h6 >Les Mots Clés</h6>
+                          <br>
+                         {% render_field filter.form.subject class="form-control" %}              
+                                  
+                         <div class="section-head text-center col-sm-12">
+
+
+                                     
+                          <button type="submit" class="butn butn-light mt-30" ><span>Lancer la recherche</span></button>   
+                          </div>
+
+
+                             </form>
+
+                       </div>
+                          
+                           
+           </div>
+         </div>
+       </div>
+     </header>
+
+  
+   
+
+
+       <!-- =====================================
+       ==== Start Blog -->
+
+       <section class="blog section-padding" data-scroll-index="5">
+           <div class="container">
+               <div class="row">
+                   
+                   <div class="section-head text-center col-sm-12">
+                       <h4>Projets et idées de capteurs innovants</h4>
+                       <h6>Résultats</h6>
+                   </div>
+
+      
+
+
+
+
+                   {% for user in filter.qs %}
+                       <div class="col-lg-4">
+                     
+                        <div class="item text-center mb-md50">
+                            <div class="post-img">
+                                <div class="img">
+                                    <img src="{% static 'acro/img/blog/1.jpg'%}" alt="">
+                                </div>
+                            </div>
+                            <div class="cont">
+                              <h2><a href="#0">{{user.titre_projet}}</a></h2> 
+                               
+                            
+                            
+                                <div class="info">
+                                  
+                                
+                                  <a href="{% url 'students:forum-by' user.owner %}">{{user.owner.student.nom}} {{user.owner.student.prenom}}</a> <br>
+                                  <a href="#0">{{user.owner.student.fonction}}</a> <br>
+                                  <a href="#0">{{user.created_at}}</a>
+                                    
+                                </div>
+                             
+                             
+                          
+                                <p>{{user.description_projet}}</p>
+                                <button type="button"  class="btn btn-primary"><a style="color: aliceblue" href="{% url 'students:forum_detail' user.slug %}">Sélectionner</a> </button> 
+                            </div>
+                        </div>
+                   
+                        
+                   
+                      
+                     
+                    </div>
+                    {% empty %}
+ 
+                    <p class="text-center">  No data are availbe about this Case Study</p>   
+
+
+                    {% endfor %}
+
+
+
+
+
+
+
+
+                       
+                  
+                  
+                      </div>
+
+           
+               </div>
+           </div>
+       </section>
+
+       <!-- End Blog ====
+       ======================================= -->
+
+
+
+       <footer class="text-center">
+           <div class="container">
+
+               <!-- Logo -->
+        
+               
+          
+
+               <p>&copy; 2020 ERPI Laboratory. All Rights Reserved.</p>
+               <p>CAPteurs intelligents pour la transformation des MATériaux (des ressources aux produits : CAP-MAT" est cofinancé par l'union européenne dans le cadre opérationnel FEDER-FSE Lorraine et Massif des Vosges 2014-2020</p>
+       
+                   </div>
+       </footer>
+
+       <!-- End Footer ====
+       ======================================= -->
+
+
+
+
+      
+       <!-- jQuery -->
+       <script src="{% static 'acro/js/jquery-3.0.0.min.js' %}"></script>
+       <script src="{% static 'acro/js/jquery-migrate-3.0.0.min.js' %}"></script>
+
+       <!-- popper.min -->
+       <script src="{% static 'acro/js/popper.min.js' %}"></script>
+
+       <!-- bootstrap -->
+       <script src="{% static 'acro/js/bootstrap.min.js' %}"></script>
+
+       <!-- scrollIt -->
+       <script src="{% static 'acro/js/scrollIt.min.js' %}"></script>
+
+       <!-- jquery.waypoints.min -->
+       <script src="{% static 'acro/js/jquery.waypoints.min.js' %}"></script>
+
+       <!-- jquery.counterup.min -->
+       <script src="{% static 'acro/js/jquery.counterup.min.js' %}"></script>
+
+       <!-- owl carousel -->
+       <script src="{% static 'acro/js/owl.carousel.min.js' %}"></script>
+
+       <!-- jquery.magnific-popup js -->
+       <script src="{% static 'acro/js/jquery.magnific-popup.min.js' %}"></script>
+
+       <!-- stellar js -->
+       <script src="{% static 'acro/js/jquery.stellar.min.js' %}"></script>
+
+       <!-- isotope.pkgd.min js -->
+       <script src="{% static 'acro/js/isotope.pkgd.min.js' %}"></script>
+
+       <!-- YouTubePopUp.jquery -->
+       <script src="{% static 'acro/js/YouTubePopUp.jquery.js' %}"></script>
+
+       <!-- particles.min js -->
+       <script src="{% static 'acro/js/particles.min.js' %}"></script>
+
+       <!-- app js -->
+       <script src="{% static 'acro/js/app.js' %}"></script>
+
+       <!-- Map -->
+       <script src="{% static 'acro/js/map.js' %}"></script>
+
+       <!-- validator js -->
+       <script src="{% static 'acro/js/validator.js' %}"></script>
+
+       <!-- custom scripts -->
+       <script src="{% static 'acro/js/scripts.js' %}"></script>
+
+       <!-- google map api -->
+       <script async defer
+           src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBK7lXLHQgaGdP3IvMPi1ej0B9JHUbcqB0&callback=initMap">
+       </script>
+
+   </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                          
+                  
+
+                
+                      
+                      
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                  
+
+
+                  
+           

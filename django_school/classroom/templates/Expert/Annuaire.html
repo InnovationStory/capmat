@@ -1,0 +1,242 @@
+
+
+
+{% load static %}
+<!DOCTYPE HTML>
+<!--
+	Transitive by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>CapMat</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="{% static 'template/assets/css/main.css' %}" />
+		<link rel="stylesheet" href="{% static 'template/assets/css/main.css' %}" />
+		<link rel="stylesheet" href="{%  static  'css/style.css' %}">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	  <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+	  <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800" rel="stylesheet">
+	  <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900" rel="stylesheet">
+
+	  <!-- Plugins -->
+	  <link rel="stylesheet" href="{% static 'acro/css/plugins.css' %}" />
+
+	  <link rel="stylesheet" href="{%  static 'collaboration/assets/css/main.css' %}"  />
+	  
+        <!-- Core Style Css -->
+        <link rel="stylesheet" href="{% static 'acro/css/style.css' %}" />
+
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header">
+				
+
+				<a href="#menu" class="toggle"><span>Menu</span></a>
+				
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+			
+				<ul class="links">
+					<li><a href="{% url 'students:first_page' %}">Accueil </a></li>
+					<li><a href="{% url 'students:lanceur_projet_home' %}">Nouveau Projet</a></li>
+					<li><a href="{% url 'students:mes_projets' %}">Projets</a></li>
+					<li><a href="{% url 'students:collaborations' %}">Collaborations</a></li>
+					<li><a href="{% url 'students:technologies' %}">Technologies</a></li>
+					<li><a href="{% url 'students:expert_home' %}">Experts</a></li>
+					<li><a href="{% url 'students:forum_list' %}">Espace de Réflexion</a></li>
+					<li><a href="{% url 'students:profile'%}">Profil</a></li>
+					<li><a href="{% url 'logout' %}">Se déconnecter</a></li>
+				</ul>
+			</nav>
+
+		<!-- One -->
+
+
+		
+		
+	
+
+		
+		
+
+	
+
+	
+
+
+
+
+
+
+
+
+
+   <!-- =====================================
+        ==== Start Blog -->
+
+
+		<section id="theree" class="wrapper style3">
+			<div class="inner">
+
+				<header class="align-center">
+					<h2>Annuaire des experts</h2>
+					
+				
+				
+				</header>
+
+			
+			</div>
+		</section>
+
+
+
+
+
+
+
+
+		<section class="blog section-padding" data-scroll-index="5">
+            <div class="container">
+                <div class="row">
+				
+			   
+					<div class="offset-lg-1 col-lg-10 offset-md-1 col-md-10">
+				  
+						{% load widget_tweaks %}
+
+				
+					<form method="get">
+								  
+						
+							
+							
+										<h5 >Déscplines Scientifiques des experts</h5>
+										
+								  <h4 >{% render_field filter.form.interests class="form-control" %} </h4>
+							
+					
+										<h5 >Domaines d'application des experts </h5>
+										
+										<h4 >{% render_field filter.form.domaine class="form-control" %} </h4>
+						
+							
+						
+									
+								
+								
+										<button type="submit" style="display: block;
+										margin : auto;" class="btn btn-primary">Lancer la recherche</button>   
+
+							
+									
+								
+										
+							  
+						  </form>
+						</div>
+				
+						<div class="offset-lg-1 col-lg-10 offset-md-1 col-md-10"></div>
+			   {% for user in filter.qs %}
+		
+		
+			   <div class="col-lg-4">
+				<div class="item text-center mb-md50">
+					<div class="post-img">
+						<div class="img">
+							<img src="img/blog/1.jpg" alt="">
+						</div>
+					</div>
+					<div class="cont">
+						<div class="info">
+							<h6 style="color: black;"> {{user.nom}} {{user.prenom}}</h6>
+							<ui>
+							<li><a style="color: black;">{{user.fonction}}</a></li>
+							<li><a style="color: black;">{{user.composante}}</a></li>
+							
+                             <li><a style="color: black;">{{user.adresse_email}}</a></li>
+						</ui>
+						</div>
+					
+						
+					</div>
+				</div>
+			</div>
+		
+			   {% empty %}
+		
+			   <p class="text-center">  No data are availbe about this Case Study</p>   
+		
+				  {% endfor %}
+		
+			
+				</div>
+
+			</div>
+			 
+                  
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+
+
+
+        <footer class="text-center">
+            <div class="container">
+
+             
+                <p>&copy; 2020 ERPI Laboratory. All Rights Reserved.</p>
+        
+
+            </div>
+        </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+		</div> 
+		<!-- Scripts -->
+		<script src="{%  static 'collaboration/assets/js/jquery.min.js' %}"></script>
+		<script src="{%  static 'collaboration/assets/js/jquery.scrolly.min.js' %}"></script>
+		<script src="{%  static 'collaboration/assets/js/jquery.scrollex.min.js' %}"></script>
+		<script src="{%  static 'collaboration/assets/js/skel.min.js' %}"></script>
+		<script src="{%  static 'collaboration/assets/js/util.js' %}"></script>
+		<script src="{%  static 'collaboration/assets/js/main.js' %}"></script>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+

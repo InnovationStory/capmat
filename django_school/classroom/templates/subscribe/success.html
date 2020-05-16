@@ -1,0 +1,37 @@
+<! -- template label for introducing notifications -- >
+{% load notifications_tags %}
+{% notifications_unread as unread_count %}
+
+...
+
+<! -- existing code, user drop-down box -- >
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" ...>
+        
+        New code, small red dot -- >
+        {% if unread_count %}
+            <svg viewBox="0 0 8 8"
+                 width="8px"
+                 height="8px">
+                <circle cx="4"
+                        cy="4"
+                        r="4"
+                        fill="#ff6b6b"
+                        ></circle>
+            </svg>
+        {% endif %}
+        
+        {{ user.username }}
+    </a>
+  
+    <div class="dropdown-menu">
+        
+        <a class = "dropdown item" href = "ා" > notification
+            {% if unread_count %}
+            <span class="badge badge-danger">{{ unread_count }}</span>
+            {% endif %}
+        </a>
+        
+       
+    </div>
+</li>

@@ -1,0 +1,734 @@
+
+
+
+
+
+{% load crispy_forms_tags %}
+{% load humanize %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}CapMat{% endblock title %}</title>
+    <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
+    <meta name="description" content="An enterprise Social Network">
+    <meta name="author" content="Sebastian Reyes">
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+    {% block css %}
+    <!-- Latest compiled and minified Bootstrap 4 beta CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Your stuff: Third-party CSS libraries go here -->
+    <link rel="stylesheet" type="text/css" href="{% static 'boot/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <!-- This file stores project-specific CSS -->
+	<link href="{% static 'boot/css/bootcamp.css' %}?v=1" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'template/assets/css/main.css' %}" />
+		 <!-- Google Fonts -->
+		 <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+		 <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800" rel="stylesheet">
+		 <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900" rel="stylesheet">
+ 
+		 <!-- Plugins -->
+		 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		 <link rel="stylesheet" href="{% static 'acro/css/plugins.css' %}" />
+ 
+		 <!-- Core Style Css -->
+		 <link rel="stylesheet" href="{% static 'acro/css/style.css'%}" />
+		 
+    {% endblock css %}
+	{% block head %}{% endblock head %}
+	
+<style>
+
+
+.notification {
+  position: relative;
+  width: 2em;
+  height: 2em;
+}
+.notification svg {
+  width: 2em;
+  height: 2em;
+}
+.notification svg > path {
+  fill: #FFFFFF;
+}
+.notification--bell {
+  animation: bell 2.2s linear infinite;
+  transform-origin: 50% 0%;
+}
+ .notification--bellClapper {
+  animation: bellClapper 2.2s 0.1s linear infinite;
+}
+.notification--num {
+  position: absolute;
+  top: 0%;
+  left: 60%;
+  font-size: 1rem;
+  border-radius: 50%;
+  width: 1.75em;
+  height: 1.75em;
+  background-color: #FF4C13;
+  
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 1.7em;
+  animation: notification 3.2s ease;
+}
+
+@keyframes bell {
+  0%, 25%, 75%, 100% {
+    transform: rotate(0deg);
+  }
+  40% {
+    transform: rotate(2deg);
+  }
+  45% {
+    transform: rotate(-2deg);
+  }
+  55% {
+    transform: rotate(1deg);
+  }
+  60% {
+    transform: rotate(-1deg);
+  }
+}
+@keyframes bellClapper {
+  0%, 25%, 75%, 100% {
+    transform: translateX(0);
+  }
+  40% {
+    transform: translateX(-0.15em);
+  }
+  45% {
+    transform: translateX(0.15em);
+  }
+  55% {
+    transform: translateX(-0.1em);
+  }
+  60% {
+    transform: translateX(0.1em);
+  }
+}
+@keyframes notification {
+  0%, 25%, 75%, 100% {
+    opacity: 1;
+  }
+  30%, 70% {
+    opacity: 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
+  </head>
+  <body>
+    {% block body %}
+  
+
+
+	  
+	{% load notifications_tags %}
+		{% notifications_unread as unread_count %}
+	
+
+		<nav class="navbar navbar-expand-lg " style="background-color:rgb(53, 49, 49)">
+			<div class="container">
+	
+			<!-- Logo -->
+			<h5 style="color: #FFFFFF;">
+				<a  href="{% url 'students:first_page' %}">Cap-Mat  </a>     
+			</h5>
+	
+			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="icon-bar"><i class="fas fa-bars"></i></span>
+			  </button>
+	
+			  <!-- navbar links -->
+			  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'students:first_page' %}" data-scroll-nav="2">Accueil</a>
+					
+					  </li>
+				
+					  <li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="{% url 'students:collaborations' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					 
+						  Mes Projets
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						  <a class="dropdown-item"   href="{% url 'students:lanceur_projet_home' %}">Créer un nouveau projet</a>
+						  <div class="dropdown-divider"></div>
+						  <a class="dropdown-item" href="{% url 'students:mes_projets' %}">La liste de mes projets</a>
+						</div>
+					  </li>
+
+					  <li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="{% url 'students:collaborations' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					 
+						Mes Collaborations
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						  <a class="dropdown-item" href="{% url 'students:list_actuelle' %}">Collaborations actuelles</a>
+						  <div class="dropdown-divider"></div>
+						  <a class="dropdown-item" href="{% url 'students:list_potentielle' %}">Collaborations potentielles</a>
+						</div>
+					  </li>
+	
+					  <li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					 
+						<span> Mes Technologies </span>
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						  <a class="dropdown-item" href="{% url 'students:MesTechnologies_list' %}">La Banque de Technologies </a>
+						  <div class="dropdown-divider"></div>
+						  <a class="dropdown-item" href="{% url 'students:capteur_home' %}">Mes Technologies </a>
+						</div>
+					  </li>
+	
+					  <li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					 
+						  Experts
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						  <a class="dropdown-item" href="{% url 'students:liste' %}">Mes Experts</a>
+						  <div class="dropdown-divider"></div>
+						  <a class="dropdown-item" href="{% url 'students:Annuaire' %}">Annuaire des experts</a>
+						</div>
+					  </li>
+	
+				  <li class="nav-item"><a class="nav-link" href="{% url 'notice:inbox' %}"> Inbox 	{% if unread_count %}
+					<span class="badge badge-danger" >{{ unread_count }}</span>
+					{% endif %}</a></li>
+		
+	
+
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	  
+						  {{ request.user.username }}
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						  <a class="dropdown-item" href="{% url 'students:profile' %}"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i>&nbsp; Mon Profil</a>
+						  <div class="dropdown-divider"></div>
+						  <a class="dropdown-item" href="{% url 'logout' %}"> Se déconnecter </a>
+						</div>
+					  </li>
+	  
+	  
+	
+	  
+					  <li class="nav-item dropdown">
+					  
+						  <div class="notification">
+							  <svg viewbox="0 0 166 197">
+								<path d="M82.8652955,196.898522 C97.8853137,196.898522 110.154225,184.733014 110.154225,169.792619 L55.4909279,169.792619 C55.4909279,184.733014 67.8452774,196.898522 82.8652955,196.898522 L82.8652955,196.898522 Z" class="notification--bellClapper"></path>
+							  <path d="M146.189736,135.093562 L146.189736,82.040478 C146.189736,52.1121695 125.723173,27.9861651 97.4598237,21.2550099 L97.4598237,14.4635396 C97.4598237,6.74321823 90.6498186,0 82.8530327,0 C75.0440643,0 68.2462416,6.74321823 68.2462416,14.4635396 L68.2462416,21.2550099 C39.9707102,27.9861651 19.5163297,52.1121695 19.5163297,82.040478 L19.5163297,135.093562 L0,154.418491 L0,164.080956 L165.706065,164.080956 L165.706065,154.418491 L146.189736,135.093562 Z" class="notification--bell"></path>
+							  </svg>
+							  {% if unread_count %}
+							<span><a  class="notification--num"href="{% url 'notice:list' %}" >{{ unread_count }}</a></span>  
+							  {% endif %}
+							</div>
+						</li>
+	
+
+				</ul>
+			  </div>
+			</div>
+		</nav>
+	
+
+	 
+			 <!-- =====================================
+			 ==== Start Services -->
+	 
+		
+			 <section class="contact section-padding">
+				<div class="container">
+					<div class="row">
+		
+		
+						<div class="col-md-8 blog-content">
+		
+			  
+							<h4> Intitulé du projet : {{ post.titre_projet }}</h4>
+							<p class=" text-muted">{{ post.user.username }} | {{post.created_at | naturaltime}}</p>
+							<p class=" text-muted">Porteur du projet {{ porteur.student.nom }} {{ porteur.student.prenom }}</p>
+							<div class="col-md-8 card mb-4  mt-3 left  top">
+							  <div class="card-body">
+							  
+				
+				
+				
+				
+								
+									
+							<div class="section  col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong>Déscription du projet</strong></label>
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.description_projet | safe }}</textarea></p>
+					
+						</br>
+							</div>
+									
+                  
+							<div class="section col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong>Type de de l'événement à détecter </strong> </label>
+	
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.type_evt | safe }}</textarea></p>
+							</br>
+							</div>
+									 
+		  
+							
+
+
+
+							<div class="section  col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong>Disciplinaires scientifiques nécessaires au projet</strong></label>
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{% for d in post.subject.all %} {{ d.name}}, {% endfor %}</textarea></p>
+					
+						</br>
+							</div>
+									
+                  
+							<div class="section col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong>Domaine d'application lié au projet  </strong> </label>
+	
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.domaine | safe }}</textarea></p>
+							</br>
+							</div>
+									 
+							{% if post.sensibilite %}
+							<div class="section col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong>Sensibilité</strong></label>
+								  <p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.sensibilite  | safe }}</textarea></p>
+							</br>
+							</div>
+							{% endif  %}
+							{% if post.stabilite %}
+							<div class="section col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong>Stabilité </strong> </label>
+	
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.stabilite | safe }}</textarea></p>
+							</br>
+							</div>
+							{% endif  %}
+							{% if post.selectivite %}	 
+							<div class="section col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong>Sélectivité </strong> </label>
+	
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.selectivite | safe }}</textarea></p>
+							</br>
+							</div>
+							{% endif  %}
+							{% if post.gamme %}	 
+							<div class="section col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong>Gamme </strong> </label>
+	
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.gamme | safe }}}</textarea></p>
+							</br>
+							</div>
+							{% endif  %}	 
+					
+
+
+							{% if post.format_sortie %}	
+							<div class="section  col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong>Format de sortie</strong></label>
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.format_sortie  | safe }}</textarea></p>
+					
+						</br>
+							</div>
+							{% endif  %}	
+							{% if post.temps_reponse %}	
+							<div class="section col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong>Temps de réponse</strong> </label>
+	
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.temps_reponse  | safe }}</textarea></p>
+							</br>
+							</div>
+							{% endif  %}	 
+
+
+							{% if post.condition_ambiante %}	
+							<div class="section col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong>Conditions ambiantes  </strong> </label>
+	
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.condition_ambiante  | safe }}</textarea></p>
+							</br>
+							</div>
+							{% endif  %}	 
+
+
+							{% if post.cout %}	
+							<div class="section col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong>Coût  </strong> </label>
+	
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.cout  | safe }}</textarea></p>
+							</br>
+							</div>
+							{% endif  %}	 
+							{% if post.poids %}	
+							<div class="section col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong>Dimensions</strong> </label>
+	
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.poids  | safe }}</textarea></p>
+							</br>
+							</div>
+							{% endif  %}	 
+							{% if post.taille  %}	
+							<div class="section col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong>Taille </strong> </label>
+	
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.taille  | safe }}</textarea></p>
+							</br>
+							</div>
+							{% endif  %}	 
+
+							{% if post.finance %}	
+							<div class="section col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong>Finance </strong> </label>
+	
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.finance  | safe }}</textarea></p>
+							</br>
+							</div>
+							{% endif  %}	 
+							{% if post.nom_1 %}	
+							<h1>Équipe</h1>
+							<div class="section col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong> Membre </strong> </label>
+	
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.nom_1  | safe }} {{ post.prenom_1  | safe }}</textarea></p>
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.adresse_email_1  | safe }} </textarea></p>
+							</br>
+							</div>
+							{% endif  %}	 
+							{% if post.nom_2 %}	
+						
+							<div class="section col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong> Membre </strong> </label>
+	
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.nom_2  | safe }} {{ post.prenom_2  | safe }}</textarea></p>
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.adresse_email_2  | safe }} </textarea></p>
+							</br>
+							</div>
+							{% endif  %}	 
+							{% if post.nom_3 %}	
+						
+							<div class="section col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong> Membre </strong> </label>
+	
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.nom_3  | safe }} {{ post.prenom_3  | safe }}</textarea></p>
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.adresse_email_3  | safe }} </textarea></p>
+							</br>
+							</div>
+							{% endif  %}	 
+
+
+									
+									
+				
+				
+							  
+						 
+							  
+							   
+						
+						
+						
+						
+						
+						
+						
+						
+						
+							  </div>
+							</div>
+		  
+		  
+		
+		  
+			  
+		  
+				
+								 
+		  
+						
+				  
+						 
+						
+					  
+					
+					  
+				
+				  
+							</div>
+							<div class="col-md-4 sidebar">
+					  
+							  <div class="sidebar-box">
+								<div class="sidebar-box">
+								  <div class="categories">
+									<h4>Rejoindre le projet </h4>
+									<form method="POST">
+										{% csrf_token %}
+										<div class = "form-group">
+											<input type="submit" value="Confirmer" class = 'btn btn-primary btn-lg'>
+												</div>
+											</form>
+								  
+													  
+								
+						
+											<a href="{% url 'students:first_page'  %}" class="button alt">
+												<span  aria-hidden="true"></span>
+												 <span><strong>Annuler</strong></span>            
+											 </a>
+							
+								  </div>
+								</div>
+							
+							  </div>
+						  
+					  
+						   
+							</div>
+		
+		
+		
+		
+		
+		
+		
+			
+			</section>
+
+
+
+
+
+
+
+
+
+
+			 
+			 <!-- End Services ====
+			 ======================================= -->
+	 
+
+	 
+			 <!-- =====================================
+			 ==== Start Works -->
+	
+			 <!-- End Works ====
+			 ======================================= -->
+	 
+
+	 
+	 
+
+			 <footer class="text-center">
+				 <div class="container">
+	 
+					
+					 <p>&copy; copyright: 2020 <a href="https://templated.co/">ERPI (Research team on innovation process).</a></p>
+	 
+				 </div>
+			 </footer>
+	 
+			 <!-- End Footer ====
+			 ======================================= -->
+	 
+	 
+	 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!-- /container -->
+
+      <!-- Le javascript
+      ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      {% block javascript %}
+        <!-- Required by Bootstrap v4 -->
+	   
+			 <script src="{% static 'acro/js/jquery-3.0.0.min.js' %}"></script>
+		<script src="{% static 'acro/js/jquery-migrate-3.0.0.min.js' %}"></script>
+
+		<!-- popper.min -->
+		<script src="{% static 'acro/js/popper.min.js' %}"></script>
+
+		<!-- bootstrap -->
+		<script src="{% static 'acro/js/bootstrap.min.js' %}"></script>
+
+		<!-- scrollIt -->
+		<script src="{% static 'acro/js/scrollIt.min.js' %}"></script>
+
+		<!-- jquery.waypoints.min -->
+		<script src="{% static 'acro/js/jquery.waypoints.min.js' %}"></script>
+
+		<!-- jquery.counterup.min -->
+		<script src="{% static 'acro/js/jquery.counterup.min.js' %}"></script>
+
+		<!-- owl carousel -->
+		<script src="{% static 'acro/js/owl.carousel.min.js' %}"></script>
+
+		<!-- jquery.magnific-popup js -->
+		<script src="{% static 'acro/js/jquery.magnific-popup.min.js' %}"></script>
+
+		<!-- stellar js -->
+		<script src="{% static 'acro/js/jquery.stellar.min.js' %}"></script>
+
+		<!-- isotope.pkgd.min js -->
+		<script src="{% static 'acro/js/isotope.pkgd.min.js' %}"></script>
+
+		<!-- YouTubePopUp.jquery -->
+		<script src="{% static 'acro/js/YouTubePopUp.jquery.js' %}"></script>
+
+
+		<!-- validator js -->
+		<script src="{% static 'acro/js/validator.js' %}"></script>
+
+		<!-- custom scripts -->
+		<script src="{% static 'acro/js/scripts.js' %}"></script>
+
+	
+
+		
+		
+	
+      {% endblock javascript %}
+
+      {% block modal %}{% endblock modal %}
+
+    {% endblock body %}
+  </body>
+
+  <!-- /.container -->
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

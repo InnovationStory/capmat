@@ -1,0 +1,491 @@
+
+{% load static %}
+<!DOCTYPE HTML>
+<!--
+	Transitive by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>CapMat</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="{% static 'template/assets/css/main.css' %}" />
+		<link rel="stylesheet" href="{% static 'template/assets/css/main.css' %}" />
+		<link rel="stylesheet" href="{%  static  'css/style.css' %}">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	  <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+	  <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800" rel="stylesheet">
+	  <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900" rel="stylesheet">
+
+	  <!-- Plugins -->
+	  <link rel="stylesheet" href="{% static 'acro/css/plugins.css' %}" />
+
+	  <link rel="stylesheet" href="{%  static 'collaboration/assets/css/main.css' %}"  />
+	  
+        <!-- Core Style Css -->
+        <link rel="stylesheet" href="{% static 'acro/css/style.css' %}" />
+
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header">
+				
+
+				<a href="#menu" class="toggle"><span>Menu</span></a>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="{% url 'students:first_page' %}">Accueil </a></li>
+					<li><a href="{% url 'students:lanceur_projet_home' %}">Nouveau Projet</a></li>
+					<li><a href="{% url 'students:mes_projets' %}">Projets</a></li>
+					<li><a href="{% url 'students:collaborations' %}">Collaborations</a></li>
+					<li><a href="{% url 'students:technologies' %}">Technologies</a></li>
+					<li><a href="{% url 'students:expert_home' %}">Experts</a></li>
+					<li><a href="{% url 'students:forum_list' %}">Espace de Réflexion</a></li>
+					<li><a href="{% url 'students:profile'%}">Profil</a></li>
+					<li><a href="{% url 'logout' %}">Se déconnecter</a></li>
+				</ul>
+			</nav>
+
+		<!-- One -->
+
+
+		
+
+
+
+
+
+   <!-- =====================================
+        ==== Start Blog -->
+
+
+		<section id="theree" class="wrapper style3">
+			<div class="inner">
+
+				<header class="align-center">
+					<h2>La Banque de Technologies</h2>
+					<p>Dans la section « Banque de Technologies », vous accédez à l’ensemble des technologies de la plateforme CapMat .</p>
+				
+				
+				</header>
+
+			
+			</div>
+		</section>
+
+
+
+
+
+
+
+
+		<section class="blog section-padding" data-scroll-index="5">
+            <div class="container">
+               
+			 
+					<div class="row">
+						
+						
+						<div class="section-head text-center col-sm-12">
+							<h4>{{ post.titre_projet }}</h4>
+							<h6>{{ post.owner.student.nom }} {{ post.owner.student.prenom }} | {{post.created_at | naturaltime}}</h6>
+						</div>
+		
+
+      
+      
+    
+            
+            
+					  <div class="pricing-tables full-width">
+	
+						<div class="row">
+
+							
+							
+
+							  
+		  
+							<div class="section  col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong>Déscription du projet</strong></label>
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.description_projet | safe }}</textarea></p>
+					
+						</br>
+							</div>
+									
+                  
+							<div class="section col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong>Type de de l'événement à détecter </strong> </label>
+	
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.type_evt | safe }}</textarea></p>
+							</br>
+							</div>
+									 
+		  
+							
+
+
+
+							<div class="section  col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong>Disciplinaires scientifiques nécessaires au projet</strong></label>
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{% for d in post.subject.all %} {{ d.name}}, {% endfor %}</textarea></p>
+					
+						</br>
+							</div>
+									
+                  
+							<div class="section col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong>Domaine d'application lié au projet  </strong> </label>
+	
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.domaine | safe }}</textarea></p>
+							</br>
+							</div>
+									 
+							{% if post.sensibilite %}
+							<div class="section col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong>Sensibilité</strong></label>
+								  <p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.sensibilite  | safe }}</textarea></p>
+							</br>
+							</div>
+							{% endif  %}
+							{% if post.stabilite %}
+							<div class="section col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong>Stabilité </strong> </label>
+	
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.stabilite | safe }}</textarea></p>
+							</br>
+							</div>
+							{% endif  %}
+							{% if post.selectivite %}	 
+							<div class="section col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong>Sélectivité </strong> </label>
+	
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.selectivite | safe }}</textarea></p>
+							</br>
+							</div>
+							{% endif  %}
+							{% if post.gamme %}	 
+							<div class="section col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong>Gamme </strong> </label>
+	
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.gamme | safe }}}</textarea></p>
+							</br>
+							</div>
+							{% endif  %}	 
+					
+
+
+							{% if post.format_sortie %}	
+							<div class="section  col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong>Format de sortie</strong></label>
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.format_sortie  | safe }}</textarea></p>
+					
+						</br>
+							</div>
+							{% endif  %}	
+							{% if post.temps_reponse %}	
+							<div class="section col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong>Temps de réponse</strong> </label>
+	
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.temps_reponse  | safe }}</textarea></p>
+							</br>
+							</div>
+							{% endif  %}	 
+
+
+							{% if post.condition_ambiante %}	
+							<div class="section col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong>Conditions ambiantes  </strong> </label>
+	
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.condition_ambiante  | safe }}</textarea></p>
+							</br>
+							</div>
+							{% endif  %}	 
+
+
+							{% if post.cout %}	
+							<div class="section col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong>Coût  </strong> </label>
+	
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.cout  | safe }}</textarea></p>
+							</br>
+							</div>
+							{% endif  %}	 
+							{% if post.poids %}	
+							<div class="section col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong>Dimensions</strong> </label>
+	
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.poids  | safe }}</textarea></p>
+							</br>
+							</div>
+							{% endif  %}	 
+							{% if post.taille  %}	
+							<div class="section col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong>Taille </strong> </label>
+	
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.taille  | safe }}</textarea></p>
+							</br>
+							</div>
+							{% endif  %}	 
+
+							{% if post.finance %}	
+							<div class="section col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong>Finance </strong> </label>
+	
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.finance  | safe }}</textarea></p>
+							</br>
+							</div>
+							{% endif  %}	 
+							{% if post.nom_1 %}	
+							<h1>Équipe</h1>
+							<div class="section col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong> Membre </strong> </label>
+	
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.nom_1  | safe }} {{ post.prenom_1  | safe }}</textarea></p>
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.adresse_email_1  | safe }} </textarea></p>
+							</br>
+							</div>
+							{% endif  %}	 
+							{% if post.nom_2 %}	
+						
+							<div class="section col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong> Membre </strong> </label>
+	
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.nom_2  | safe }} {{ post.prenom_2  | safe }}</textarea></p>
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.adresse_email_2  | safe }} </textarea></p>
+							</br>
+							</div>
+							{% endif  %}	 
+							{% if post.nom_3 %}	
+						
+							<div class="section col-sm-12">
+							
+								<label for="textarea-input" class=" form-control-label"><strong> Membre </strong> </label>
+	
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.nom_3  | safe }} {{ post.prenom_3  | safe }}</textarea></p>
+								<p name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control">{{ post.adresse_email_3  | safe }} </textarea></p>
+							</br>
+							</div>
+							{% endif  %}	 
+
+
+
+
+											
+									
+		  
+		  
+				
+											
+							  
+		  
+      
+      
+      
+						
+		  
+		  
+			   
+							  
+							  
+		  
+								  <div class="section-head text-center col-sm-12">
+									<li><a href="{% url 'students:forum_list'  %}" class="butn butn-light mt-30"><span>Retour</span></a>  
+								
+							
+								</div>
+										  
+				
+				   
+					
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+			 
+					  
+				  <br><br>
+				  <hr>
+             
+
+				   <!-- comments -->
+				 
+				  <div class="main-comment-section">
+					<p> Nombre des commentaires pour ce projet est de <strong>{{ comments.count }}</strong>  </p>
+
+                    <div class ="container-fluid mt-2">
+						<div class="form-group row">
+							<form method="POST" class="post-form" enctype="multipart/form-data">
+							  {% csrf_token %}
+							  {{ comment_form|crispy }}
+							  {% if request.user is authenticated %}
+							  <li><button type="submit" class="butn butn-light mt-30">Soumettre</button></li>
+					
+							  {%   else %}
+							  <li><button type="submit" class="butn butn-light mt-30" disabled >Soumettre</button></li>
+								{% endif %}
+					
+							 </form>
+						  </div>
+					
+					
+					</div>
+
+
+					
+						
+						{% for comment in comments %}
+
+						<blockquote class="blockquote">
+							
+							<cite title="Source Title">{{ comment.user|capfirst}}</cite> le <cite title="Source Title">{{ comment.timestamp}}</cite>
+							<p class="mb-0">	{{ comment.content }}</p>
+						  </blockquote>
+
+
+						  <div class="replied-comments container mt-2">
+
+							<div class="form-group row">
+								<form method="POST" class="post-form" enctype="multipart/form-data">
+								  {% csrf_token %}
+
+                            <input type="hidden" name="{{ comment_id}}" value="{{comment.id}}">
+
+								  {{ comment_form|crispy }}
+								 
+								  <li><button type="submit" class="butn butn-light mt-30">Soumettre</button></li>
+			  
+			  
+								 </form>
+							  </div>
+						  </div>
+
+
+
+
+
+
+
+
+
+
+					
+						{% endfor %}
+					
+				  </div>
+	
+						 
+				  
+
+
+
+
+
+
+							
+							
+									  
+							
+						</div>
+
+					</div>
+            
+            
+            
+         
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+	
+	
+					</div>
+			
+	 
+            </div>
+        </section>
+
+
+
+
+
+
+
+
+
+        <footer class="text-center">
+            <div class="container">
+
+           
+                
+         
+
+                <p>&copy; 2020 ERPI Laboratory. All Rights Reserved.</p>
+        
+
+            </div>
+        </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+		</div> 
+		<!-- Scripts -->
+		<script src="{%  static 'collaboration/assets/js/jquery.min.js' %}"></script>
+		<script src="{%  static 'collaboration/assets/js/jquery.scrolly.min.js' %}"></script>
+		<script src="{%  static 'collaboration/assets/js/jquery.scrollex.min.js' %}"></script>
+		<script src="{%  static 'collaboration/assets/js/skel.min.js' %}"></script>
+		<script src="{%  static 'collaboration/assets/js/util.js' %}"></script>
+		<script src="{%  static 'collaboration/assets/js/main.js' %}"></script>
+
+	</body>
+</html>
+
+

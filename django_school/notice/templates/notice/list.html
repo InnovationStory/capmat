@@ -1,0 +1,90 @@
+
+
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    notice
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+
+
+    <div class="row mt-2 ml-4">
+        <ul class="list-group">
+            {% for notice in notices %}
+                <li class="list-group-item" id="notice_link">
+                    <a >
+                    <span style="color: #5897fb;">
+                        {{ notice.actor.student.nom }} {{ notice.actor.student.prenom }}
+                    </span>
+                        <span  >{{notice.verb}} </span >   <span  >{{notice.target.titre_projet}} </span > 
+                            {% if notice.level == "warning" %}
+                        </br>
+                        <a href="{% url 'confirmation_projet' pk_1=notice.target.pk  pk_2=notice.actor.pk  pk_3=notice.recipient.pk  notice_id=notice.id %}">Confirmer/Annuler</a> 
+                          
+                    </a>
+                    {% endif %} 
+
+               
+
+                    {% if notice.level == "success" %}
+                                           
+                                                <a href="{% url 'confirmation_expert' pk_1=notice.target.pk  pk_2=notice.actor.pk  pk_3=notice.recipient.pk   notice_id=notice.id %}" style = "color: #5897fb;;" > Rejoindre/Annuler   </a>   
+                                                {% endif %} 
+              
+                                                 
+
+
+                   
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<style>
+    #notice_link a:link {
+        color: black;
+    }
+
+    #notice_link a:visited {
+        color: lightgrey;
+    }
+</style>
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

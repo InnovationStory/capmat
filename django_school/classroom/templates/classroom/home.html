@@ -1,0 +1,400 @@
+{% load static%}
+
+<!doctype html>
+
+<html class="no-js" lang="zxx">
+
+    <head>
+
+    	<!-- Metas -->
+        <meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<meta name="keywords" content="HTML5 Template Arco onepage themeforest" />
+		<meta name="description" content="Arco - Onepage Multi-Purpose HTML5 Template" />
+		<meta name="author" content="" />
+
+		<!-- Title  -->
+		<title>CapMat</title>
+
+		<!-- Favicon -->
+	
+		<!-- Google Fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900" rel="stylesheet">
+
+		<!-- Plugins -->
+		<link rel="stylesheet" href="{% static 'acro/css/plugins.css' %}" />
+
+        <!-- Core Style Css -->
+		<link rel="stylesheet" href="{% static 'acro/css/style.css' %}" />
+		
+
+    </head>
+    
+    <body>
+
+    	<!-- =====================================
+    	==== Start Loading -->
+
+    	<div class="loading">
+    		<div class="text-center middle">
+    			<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+    		</div>
+    	</div>
+        
+    	<!-- End Loading ====
+    	======================================= -->
+
+		<!-- =====================================
+    	==== Start Navbar -->
+
+		<nav class="navbar navbar-expand-lg">
+			<div class="container">
+
+
+			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			    <span class="icon-bar"><i class="fas fa-bars"></i></span>
+			  </button>
+
+			  <h5 style="color: #FFFFFF;" href="{% url 'students:first_page' %}">
+				Cap-Mat      
+			</h5>
+			  <!-- navbar links -->
+			  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+				  
+			    <ul class="navbar-nav ml-auto">
+			      <li class="nav-item">
+			        <a class="nav-link active" href="main.html" data-scroll-nav="0">Accueil</a>
+			      </li>
+				  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'student_signup' %}">Lancer un projet</a>
+                  </li>
+		
+			      <li class="nav-item">
+			        <a class="nav-link" href="{% url 'student_signup' %}">Participer à un projet</a>
+			      </li>
+          
+			      <li class="nav-item">
+			        <a class="nav-link" href="{% url 'question_an' %}" >Espace de réflexion</a>
+				  </li>
+
+				  
+					{% if user.is_authenticated %}
+			      <li class="nav-item">
+			        <a class="nav-link" href="{% url 'logout' %}" >Se déconnecter<strong>{{ user.username }}</strong></a>
+				  </li>
+				
+				  {% else %}
+
+				  <li class="nav-item">
+					<a href="{% url 'login' %}" class="butn butn-bg mt-5"><span>Connexion</span></a>
+				  </li>
+				  <li class="nav-item">
+					<a href="{% url 'student_signup' %}" class="butn butn-bg mt-5"><span>Inscription</span></a>
+				  </li>
+
+				  {% endif %}
+		
+			    </ul>
+			  </div>
+			</div>
+		</nav>
+
+    	<!-- End Navbar ====
+    	======================================= -->
+
+		<!-- ====== Header ======  -->
+		<section id="home" class="min-header" data-scroll-index="0">
+
+			<div class="v-middle mt-30">
+				<div class="container">
+					<div class="row">
+
+						<div class="text-center col-md-12">
+							<h5 style="color: whitesmoke;">Bienvenue sur  CAP-MAT</h5>
+              <p href="main.html" style="color: whitesmoke;">La plateforme collaborative spécialisée dans les capteurs innovants.</p> 
+              <p>CAPteurs intelligents pour la transformation des MATériaux (des ressources aux produits : CAP-MAT" est cofinancé par l'union européenne dans le cadre opérationnel FEDER-FSE Lorraine et Massif des Vosges 2014-2020</p>
+					
+						</div>
+ 
+					</div>
+				</div><!-- /row -->
+      </div><!-- /container -->
+      
+		</section>
+		<!-- ====== End Header ======  -->
+
+		<!--====== Blog ======-->
+		<section class="blogs section-padding">
+			<div class="container">
+				<div class="row">
+					
+					<div class="col-md-8">
+						<div class="posts">
+
+							<div class="post">
+								<div class="post-img">
+									<a href="single-post.html" class="full-width">
+                    <img src="{% static 'images/hero_2.jpg' %}" alt="">
+              
+									</a>
+								</div>
+								<div class="content text-center">
+									<div class="post-meta">
+										<div class="post-title">
+											<h5>
+												<a href="single-post.html">CAPteurs intelligents pour la transformation des MATériaux </a>
+											</h5>
+										</div>
+									
+									</div>
+
+									<div class="post-cont">
+										
+
+
+
+										
+
+										<p>La mise en place d’un processus de collaboration dès le stade recherche entre des développeurs de concepts de capteurs et des lanceurs des projets (chercheurs) ayant besoin de capteurs pour l’élaboration de nouveaux matériaux ou la conduite de nouveaux procédés.</p>
+
+
+
+
+
+
+
+
+									</div>
+
+									<a href="single-post.html" class="butn butn-bg mt-30"><span>Catégories</span></a>
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-4">
+						<div class="side-bar">
+				
+							<div class="widget">
+								<div class="widget-title">
+									<h6>Introduction</h6>
+								</div>
+								<ul>
+									<p>Le projet CAP-MAT se positionne dans la thématique « usine du futur » : il s’agit de développer des capteurs intelligents pour la transformation des matériaux et ce, en intégrant la chaine allant des ressources au produits finis.</p>
+								
+								</ul>
+							</div>
+
+							<div class="widget">
+								<div class="widget-title">
+									<h6>Partenaires</h6>
+								</div>
+								<ul>
+									<li><a href="#0">ERPI</a></li>
+								</ul>
+								
+							</div>
+
+					
+							<div class="widget">
+								<div class="widget-title">
+									<h6>Créer et piloter un projet</h6>
+								</div>
+								<ul>
+									<p>Dans cette catégorie, vous pouvez créer et piloter des projets de creation de capteurs.</p>
+								
+								</ul>
+							</div>
+
+							
+
+
+							<div class="widget">
+								<div class="widget-title">
+									<h6>Participer à un projet</h6>
+								</div>
+								<ul>
+									<p>Dans cette catégorie, vous pouvez participer à des projets de développement des capteurs.</p>
+								</ul>
+							</div>
+							
+
+							
+							<div class="widget">
+								<div class="widget-title">
+									<h6>Espace de réflexion</h6>
+								</div>
+								<ul>
+									<p>Dans cette catégorie, vous pouvez échanger, demander un avis, donner un avis , et échangez librement autour de différents sujets avec d'autres expert</p>
+								</ul>
+							</div>
+
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+		<!--====== End Blog ======-->
+
+
+
+  
+
+
+
+    <section class="hero section-padding" id="1" data-scroll-index="1">
+      <div class="container">
+          <div class="row">
+              
+              <div class="intro offset-lg-1 col-lg-10 text-center mb-80">
+                  <h3>Les catégories du CapMat</h3>
+               
+
+              </div>
+			  
+              <div class="col-lg-4">
+                  <div class="item text-center mb-md50">
+                      <span class="icon icon-basic-book-pen"></span>
+                      <h5>Je lance et je pilote des projets de création du capteur</h5>
+                      
+                  </div>
+              </div>
+			  
+			  
+			  
+              <div class="col-lg-4">
+                  <div class="item text-center mb-md50">
+                      <span class="icon icon-basic-pencil-ruler"></span>
+                      <h5>Je participe à un projet de développement de capteur</h5>
+                     
+                  </div>
+              </div>
+
+              <div class="col-lg-4">
+                  <div class="item text-center">
+                      <span class="icon icon-basic-cards-diamonds"></span>
+                      <h5>Espace de réflexions</h5>
+                   
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </section>
+
+
+
+  <section class="section-box" data-scroll-index="1">
+      <div class="container-fluid">
+          <div class="row">
+
+              <div class="col-lg-12 half-content bg-gray">
+                  <div class="box-white">
+
+                  
+                      <!-- Skills -->
+
+                      <div class="skills">
+                          <div class="row">
+                              <img src="{% static 'images/images_11.png'%}" alt="image">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+		<!-- =====================================
+        ==== Start Footer -->
+
+        <footer class="text-center">
+            <div class="container">
+
+        
+       
+				<p>&copy; 2020 ERPI Laboratory. All Rights Reserved.</p>
+				<p>CAPteurs intelligents pour la transformation des MATériaux (des ressources aux produits : CAP-MAT" est cofinancé par l'union européenne dans le cadre opérationnel FEDER-FSE Lorraine et Massif des Vosges 2014-2020</p>
+
+            </div>
+        </footer>
+
+        <!-- End Footer ====
+        ======================================= -->
+
+
+
+       
+        <!-- jQuery -->
+		<script src="{% static 'acro/js/jquery-3.0.0.min.js' %}"></script>
+		<script src="{% static 'acro/js/jquery-migrate-3.0.0.min.js' %}"></script>
+
+		<!-- popper.min -->
+		<script src="{% static 'acro/js/popper.min.js' %}"></script>
+
+	  	<!-- bootstrap -->
+		<script src="{% static 'acro/js/bootstrap.min.js' %}"></script>
+
+		<!-- scrollIt -->
+		<script src="{% static 'acro/js/scrollIt.min.js' %}"></script>
+
+		<!-- animated.headline -->
+		<script src="{% static 'acro/js/animated.headline.js' %}"></script>
+
+		<!-- jquery.waypoints.min -->
+		<script src="{% static 'acro/js/jquery.waypoints.min.js' %}"></script>
+
+		<!-- jquery.counterup.min -->
+		<script src="{% static 'acro/js/jquery.counterup.min.js' %}"></script>
+
+		<!-- owl carousel -->
+		<script src="{% static 'acro/js/owl.carousel.min.js' %}"></script>
+
+		<!-- jquery.magnific-popup js -->
+		<script src="{% static 'acro/js/jquery.magnific-popup.min.js' %}"></script>
+
+		<!-- stellar js -->
+		<script src="{% static 'acro/js/jquery.stellar.min.js' %}"></script>
+
+      	<!-- isotope.pkgd.min js -->
+      	<script src="{% static 'acro/js/isotope.pkgd.min.js' %}"></script>
+
+        <!-- YouTubePopUp.jquery -->
+        <script src="{% static 'acro/js/YouTubePopUp.jquery.js' %}"></script>
+
+      	<!-- validator js -->
+      	<script src="{% static 'acro/js/validator.js' %}"></script>
+
+      	<!-- custom scripts -->
+        <script src="{% static 'acro/js/scripts.js' %}"></script>
+
+    </body>
+</html>
